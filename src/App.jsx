@@ -6,6 +6,7 @@ import Error from "./components/Error";
 import Loader from "./components/Loader";
 import StartScreen from "./components/StartScreen";
 import Questions from "./components/Questions";
+import NextQuestion from "./components/NextQuestion";
 
 let initialState = { questions: [], status: "loading" , index:0 , answer:null , points:0 };
 
@@ -24,6 +25,9 @@ function reducer(state, action) {
 		const question = state.questions[state.index]
 		return {...state , answer:action.payload , points: action.payload === question.currentOption ? state.points + question.points :state.points}
 	}
+	case "nextQuestion" :{
+    return {...state , answer: null , index: state.index +1 }
+  }
     default: {
       throw new Error("action type not found");
     }
@@ -43,13 +47,18 @@ const App = () => {
   const numQuestions = questions.length;
 
   return (
-    <div className="bg-slate-900 border max-w-6xl mx-auto border-slate-600 shadow shadow-violet-700 m-5  rounded-3xl p-5">
+    <div className="bg-slate-900 border max-w-6xl mx-auto border-slate-600 shadow shadow-violet-700 m-5 rounded-3xl p-5">
       <Header />
       <Main>
 		{status === "loading" && <Loader/>}
 		{status === "error" && <Error/>}
 		{status === "ready" && <StartScreen numQuestions={numQuestions} dispatch={dispatch}/>}
-		{status === "active" && <Questions question={questions[index]} dispatch={dispatch} answer={answer}/>}
+		{status === "active" && 
+    <>
+    <Questions question={questions[index]} dispatch={dispatch} answer={answer}/>
+    <NextQuestion dispatch={dispatch} answer={answer}/>
+    </>
+    }
       </Main>
     </div>
   );

@@ -1,7 +1,7 @@
 
 const Main = ({children}) => {
   return <>
-  <main className="flex items-center justify-center my-5 font-bold text-xl">
+  <main className="flex flex-col items-center justify-center gap-4 my-5 font-bold text-xl">
     {children}
   </main>
   </>
