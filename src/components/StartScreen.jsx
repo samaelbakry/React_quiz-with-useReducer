@@ -1,15 +1,21 @@
-
-const StartScreen = ({ numQuestions , dispatch }) => {
+const StartScreen = ({ numQuestions, dispatch }) => {
   return (
-    <section className="space-y-2 start">
-		<h2 className="text-2xl font-bold text-center text-blue-300 ">Welcome to the React Quiz</h2>
-		<p className="text-md text-center text-gray-300">You will be asked to answer {numQuestions} questions.</p>
-        <button className="bg-blur px-5 py-2" onClick={()=>{dispatch({type:"start"})}}>
-          Let's start!
-        </button>
+    <section className="space-y-6 text-center">
+      <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-linear-to-r from-violet-400 to-indigo-400">
+        React Quiz 🚀
+      </h2>
+      <p className="text-gray-400">
+        Ready to test yourself with {numQuestions} questions?
+      </p>
+
+      <button
+        className="btn-primary"
+        onClick={() => dispatch({ type: "start" })}
+      >
+        Start Quiz
+      </button>
     </section>
-  )
-}
+  );
+};
 
-export default StartScreen
-
+export default StartScreen;

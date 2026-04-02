@@ -1,11 +1,18 @@
 import Options from "./Options"
 
-const Questions = ({ question }) => {
+const Questions = ({ question  , dispatch , answer}) => {
   return <>
-   <div className="flex flex-col gap-4">
-     <h3>{question.question}</h3>
-    <Options question={question}/>
-   </div>
+   <div className="bg-glass p-6 space-y-6">
+  <h3 className="text-xl font-semibold text-white">
+    {question.question}
+  </h3>
+
+  <Options
+    question={question}
+    dispatch={dispatch}
+    answer={answer}
+  />
+</div>
   </>
 
 }
