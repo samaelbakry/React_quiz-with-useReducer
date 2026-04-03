@@ -1,12 +1,4 @@
-// const Options = ({ question , dispatch , answer }) => {
-//   return <>
-//     {question.options.map((option, index) => (
-//       <button key={index} className={`bg-blur px-5 py-2 ${answer === index ? 'answer' : ''} ${index===question.correctOption ? 'correct' : 'wrong'}`} onClick={()=>dispatch({type:"newAnswer" , payload:index})}>
-//         {option}
-//       </button>
-//     ))}
-//   </>
-// }
+
 const Options = ({ question, dispatch, answer }) => {
     return (
         <div className="flex flex-col gap-3">
